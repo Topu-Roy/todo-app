@@ -1,8 +1,10 @@
+import AddTodo from "./components/AddTodo";
+
 function App() {
   return (
-    <h1 className="text-3xl font-bold text-red-300 underline hover:text-blue-400">
-      Hello world!
-    </h1>
+    <div className="animated-gradient font-inter min-h-screen w-full text-slate-100">
+      <AddTodo />
+    </div>
   );
 }
 
