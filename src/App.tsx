@@ -42,23 +42,34 @@ const reducer = (state: TodoItemType[], action: ActionType): TodoItemType[] => {
 
 const initialTodos: TodoItemType[] = [];
 
-function App() {
+export default function App() {
   const [state, dispatch] = useReducer(reducer, initialTodos);
 
   function addTodo(text: string) {
     dispatch({ type: "ADD", text });
   }
 
-  // function deleteTodo(id: number) {
-  //   dispatch({ type: "DELETE", id });
-  // }
+  function deleteTodo(id: number) {
+    dispatch({ type: "DELETE", id });
+  }
+
+  function updateTodo(id: number, text: string) {
+    dispatch({ type: "UPDATE", id, text: text });
+  }
+
+  function doneTodo(id: number) {
+    dispatch({ type: "DONE", id });
+  }
 
   return (
     <div className="animated-gradient min-h-screen w-full font-inter text-slate-100">
       <AddTodo addTodo={addTodo} />
-      <TodoList todoList={state} />
+      <TodoList
+        todoList={state}
+        deleteTodo={deleteTodo}
+        doneTodo={doneTodo}
+        updateTodo={updateTodo}
+      />
     </div>
   );
 }
-
-export default App;
