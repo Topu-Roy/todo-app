@@ -70,7 +70,7 @@ export default function App() {
 
   return (
     <div className="animated-gradient w-full">
-      <div className="mx-auto min-h-screen w-full max-w-[80rem] space-y-8 font-inter text-slate-100">
+      <div className="mx-auto min-h-screen w-full max-w-[80rem] space-y-8 px-2 font-inter text-slate-100 md:px-0">
         <AddTodo addTodo={addTodo} />
         <RenderTodoList
           todoList={state}

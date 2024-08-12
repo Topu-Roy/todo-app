@@ -37,8 +37,8 @@ export default function TodoItem(props: Props) {
     >
       <p
         className={cn(
-          "flex-1",
-          props.todo.done ? "italic line-through" : "",
+          "flex-1 text-lg font-medium",
+          props.todo.done ? "italic text-white/60 line-through" : "",
           showInput ? "hidden" : "",
         )}
       >
@@ -50,15 +50,15 @@ export default function TodoItem(props: Props) {
         value={inputText}
         onChange={(event) => setInputText(event.target.value)}
         className={cn(
-          "h-12 flex-1 rounded-lg bg-slate-900/30 px-4 font-medium opacity-90 outline-[2px] ring-1 ring-white/30 placeholder:italic placeholder:text-white/90 focus:ring-white focus-visible:outline-none",
+          "h-12 w-[55%] flex-1 rounded-lg bg-slate-900/30 px-4 font-medium opacity-90 outline-[2px] ring-1 ring-white/30 placeholder:italic placeholder:text-white/90 focus:ring-white focus-visible:outline-none sm:w-full",
           showInput ? "block" : "hidden",
         )}
       />
 
-      <div className="flex items-center justify-end gap-4">
+      <div className="flex items-center justify-end gap-2 sm:gap-3">
         <button
           className={cn(
-            "tooltip size-12 items-center justify-center rounded-full font-semibold transition-all hover:bg-white/10 active:scale-105",
+            "tooltip size-8 items-center justify-center rounded-full font-semibold transition-all hover:bg-white/10 active:scale-105 sm:size-10 md:size-12 lg:size-14",
             showInput ? "inline-flex" : "hidden",
           )}
           onClick={handleSave}
@@ -70,7 +70,7 @@ export default function TodoItem(props: Props) {
         <button
           onClick={() => setShowInput((prev) => !prev)}
           className={cn(
-            `tooltip size-12 items-center justify-center rounded-full font-semibold transition-all hover:bg-white/10 active:scale-105`,
+            `tooltip size-8 items-center justify-center rounded-full font-semibold transition-all hover:bg-white/10 active:scale-105 sm:size-10 md:size-12 lg:size-14`,
             showInput === false ? "inline-flex" : "hidden",
           )}
         >
@@ -82,14 +82,17 @@ export default function TodoItem(props: Props) {
           actionFunction={() => props.deleteTodo(props.todo.id)}
           icon={<TrashIcon />}
           tooltipText="Delete task"
-          className="hover:bg-rose-300/15 hover:text-rose-500"
+          className="size-8 hover:bg-rose-300/15 hover:text-rose-500 sm:size-10 md:size-12 lg:size-14"
         />
 
         <CustomButton
           actionFunction={() => props.doneTodo(props.todo.id)}
           icon={props.todo.done ? <CheckDoubleIcon /> : <CheckIcon />}
           tooltipText={props.todo.done ? "Mark unfinished" : "Mark finished"}
-          className="bg-white/10 text-white hover:bg-white/20"
+          className={cn(
+            "size-8 bg-white/10 text-white hover:bg-white/20 sm:size-10 md:size-12 lg:size-14",
+            showInput ? "hidden sm:inline-flex" : "",
+          )}
         />
       </div>
     </div>
