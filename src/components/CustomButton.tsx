@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { cn } from "../lib/cn";
 
 type ButtonProps = {
   tooltipText: string;
@@ -16,7 +17,10 @@ const CustomButton = memo(function CustomButton({
   return (
     <button
       onClick={actionFunction}
-      className={`tooltip inline-flex size-12 items-center justify-center rounded-full font-semibold transition-all active:scale-105 ${className}`}
+      className={cn(
+        "tooltip inline-flex size-12 items-center justify-center rounded-full font-semibold transition-all active:scale-105",
+        className,
+      )}
     >
       <span className="tooltiptext">{tooltipText}</span>
       {icon}
