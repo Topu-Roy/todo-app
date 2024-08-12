@@ -9,7 +9,7 @@ type Props = {
   doneTodo: (id: number) => void;
 };
 
-const TodoList = memo(function TodoList(props: Props) {
+const RenderTodoList = memo(function TodoList(props: Props) {
   return (
     <div className="flex w-full flex-col-reverse items-start justify-center gap-4">
       {props.todoList.map((item) => (
@@ -25,4 +25,4 @@ const TodoList = memo(function TodoList(props: Props) {
   );
 });
 
-export default TodoList;
+export default RenderTodoList;

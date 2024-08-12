@@ -1,7 +1,7 @@
 import { useCallback, useReducer } from "react";
 import AddTodo from "./components/AddTodo";
-import TodoList from "./components/TodoList";
 import { idGenerator } from "./lib/idGenerator";
+import RenderTodoList from "./components/RenderTodoList";
 
 export type TodoItemType = {
   id: number;
@@ -72,7 +72,7 @@ export default function App() {
     <div className="animated-gradient w-full">
       <div className="mx-auto min-h-screen w-full max-w-[80rem] space-y-8 font-inter text-slate-100">
         <AddTodo addTodo={addTodo} />
-        <TodoList
+        <RenderTodoList
           todoList={state}
           deleteTodo={deleteTodo}
           doneTodo={doneTodo}
