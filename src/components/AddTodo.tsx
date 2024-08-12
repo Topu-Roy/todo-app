@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PlusIcon from "../assets/PlusIcon";
+import { PlusIcon } from "../assets/Icons";
 
 type Props = {
   addTodo: (task: string) => void;

@@ -1,18 +1,28 @@
+import { memo } from "react";
 import { type TodoItemType } from "../App";
+import TodoItem from "./TodoItem";
 
 type Props = {
   todoList: TodoItemType[];
-  deleteTodo(id: number): void;
-  updateTodo(id: number, text: string): void;
-  doneTodo(id: number): void;
+  deleteTodo: (id: number) => void;
+  updateTodo: (id: number, text: string) => void;
+  doneTodo: (id: number) => void;
 };
 
-export default function TodoList(props: Props) {
+const TodoList = memo(function TodoList(props: Props) {
   return (
-    <div>
+    <div className="flex w-full flex-col-reverse items-start justify-center gap-4">
       {props.todoList.map((item) => (
-        <div key={item.id}>{item.task}</div>
+        <TodoItem
+          deleteTodo={props.deleteTodo}
+          doneTodo={props.doneTodo}
+          todo={item}
+          updateTodo={props.updateTodo}
+          key={item.id}
+        />
       ))}
     </div>
   );
-}
+});
+
+export default TodoList;
