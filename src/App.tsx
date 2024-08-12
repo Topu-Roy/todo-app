@@ -9,6 +9,7 @@ export type TodoItemType = {
   done: boolean;
 };
 
+
 type ActionType =
   | { type: "UPDATE"; id: number; text: string }
   | { type: "ADD"; text: string }
