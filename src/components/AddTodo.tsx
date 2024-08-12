@@ -19,8 +19,9 @@ export default function AddTodo(props: Props) {
         />
         <button
           onClick={() => props.addTodo(inputText)}
-          className="inline-flex size-12 items-center justify-center rounded-full bg-white font-semibold text-black transition-all hover:bg-white/80 active:scale-105"
+          className="tooltip inline-flex size-12 items-center justify-center rounded-full bg-white font-semibold text-black transition-all hover:bg-white/80 active:scale-105"
         >
+          <span className="tooltiptext">Add todo</span>
           <PlusIcon />
         </button>
       </div>
