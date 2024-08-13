@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { type TodoItemType } from "../App";
 import { cn } from "../lib/cn";
 import CustomButton from "./CustomButton";
@@ -18,15 +18,17 @@ type Props = {
 };
 
 export default function TodoItem(props: Props) {
-  const [inputText, setInputText] = useState(props.todo.task);
   const [showInput, setShowInput] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setInputText(props.todo.task);
+    if (!inputRef.current) return;
+    inputRef.current.value = props.todo.task;
   }, [props.todo.task]);
 
   function handleSave() {
-    props.updateTodo(props.todo.id, inputText);
+    if (!inputRef.current) return;
+    props.updateTodo(props.todo.id, inputRef.current.value);
     setShowInput((prev) => !prev);
   }
 
@@ -47,8 +49,7 @@ export default function TodoItem(props: Props) {
 
       <input
         type="text"
-        value={inputText}
-        onChange={(event) => setInputText(event.target.value)}
+        ref={inputRef}
         className={cn(
           "h-12 w-[55%] flex-1 rounded-lg bg-slate-900/30 px-4 font-medium opacity-90 outline-[2px] ring-1 ring-white/30 placeholder:italic placeholder:text-white/90 focus:ring-white focus-visible:outline-none sm:w-full",
           showInput ? "block" : "hidden",
